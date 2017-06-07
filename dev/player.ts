@@ -6,6 +6,8 @@ class Player {
     public width:number;
     public height:number;
 
+    private callback:EventListener;
+
     constructor(parent:HTMLElement) {
         this.x = 400;
         this.y = 670;
@@ -17,7 +19,13 @@ class Player {
 
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
 
-        window.addEventListener("keydown", (e:KeyboardEvent) => this.onKeyDown(e));
+        this.callback = (e:KeyboardEvent) => this.onKeyDown(e);
+        window.addEventListener("keydown", this.callback);
+    }
+
+    public removeMe():void {
+        this.div.remove();
+        window.removeEventListener("keydown", this.callback);
     }
 
     // W A S D

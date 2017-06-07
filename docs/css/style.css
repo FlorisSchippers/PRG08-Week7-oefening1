@@ -35,6 +35,26 @@ container {
     background-color:darkgray;
 }
 
+title {
+    width:805px; height:265px;
+    background-image: url('../images/title.png');
+}
+
+startbutton {
+    width:345px; height:131px;
+    background-image: url('../images/startbutton.png');
+}
+
+start {
+    width:100%; height:100%;
+    background-image: url('../images/start.png');
+}
+
+score {
+    width:100%; height:100%;
+    background-image: url('../images/score.png');
+}
+
 level {
     width:100%; height:100%;
     background-image: url('../images/road.png');

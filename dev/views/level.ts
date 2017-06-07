@@ -1,5 +1,5 @@
-/// <reference path="car.ts"/>
-/// <reference path="player.ts"/>
+/// <reference path="../car.ts"/>
+/// <reference path="../player.ts"/>
 
 class Level implements View {
     
@@ -15,6 +15,8 @@ class Level implements View {
     private player:Player;
     
     constructor(g:Game) {    
+        this.game = g;
+
         this.div = document.createElement("level");
         g.container.appendChild(this.div);
         
@@ -48,8 +50,7 @@ class Level implements View {
 
     private gameOver():void {
         clearInterval(this.intervalID);
-        console.log("game over");
-        // this.game.showScreen();
+        this.game.showView(new Score(this.game));
     }
 
     public removeCar(c:Car){

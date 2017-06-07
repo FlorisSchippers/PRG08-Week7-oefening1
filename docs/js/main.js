@@ -37,8 +37,13 @@ var Player = (function () {
         this.div = document.createElement("player");
         parent.appendChild(this.div);
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
-        window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
+        this.callback = function (e) { return _this.onKeyDown(e); };
+        window.addEventListener("keydown", this.callback);
     }
+    Player.prototype.removeMe = function () {
+        this.div.remove();
+        window.removeEventListener("keydown", this.callback);
+    };
     Player.prototype.onKeyDown = function (event) {
         switch (event.keyCode) {
             case 65:
@@ -64,6 +69,7 @@ var Level = (function () {
     function Level(g) {
         var _this = this;
         this.cars = new Array();
+        this.game = g;
         this.div = document.createElement("level");
         g.container.appendChild(this.div);
         this.intervalID = setInterval(function () { return _this.createCar(); }, 1400);
@@ -92,7 +98,7 @@ var Level = (function () {
     };
     Level.prototype.gameOver = function () {
         clearInterval(this.intervalID);
-        console.log("game over");
+        this.game.showView(new Score(this.game));
     };
     Level.prototype.removeCar = function (c) {
         var i = this.cars.indexOf(c);
@@ -106,7 +112,7 @@ var Game = (function () {
     function Game() {
         this.container = document.createElement("container");
         document.body.appendChild(this.container);
-        this.showView(new Level(this));
+        this.showView(new Start(this));
     }
     Game.prototype.showView = function (v) {
         this.view = v;
@@ -126,5 +132,25 @@ var Util = (function () {
             car.height + car.y > player.y);
     };
     return Util;
+}());
+var Score = (function () {
+    function Score(g) {
+        this.game = g;
+        this.div = document.createElement("start");
+        g.container.appendChild(this.div);
+    }
+    return Score;
+}());
+var Start = (function () {
+    function Start(g) {
+        this.game = g;
+        this.div = document.createElement("start");
+        g.container.appendChild(this.div);
+        var title = document.createElement("title");
+        this.div.appendChild(title);
+        var btn = document.createElement("startbutton");
+        this.div.appendChild(btn);
+    }
+    return Start;
 }());
 //# sourceMappingURL=main.js.map

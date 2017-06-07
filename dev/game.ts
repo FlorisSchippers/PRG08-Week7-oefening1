@@ -1,4 +1,4 @@
-/// <reference path="level.ts"/>
+/// <reference path="views/level.ts"/>
 
 class Game {
     
@@ -8,7 +8,8 @@ class Game {
     constructor() {
         this.container = document.createElement("container");
         document.body.appendChild(this.container);
-        this.showView(new Level(this)); 
+        
+        this.showView(new Start(this));
     }
 
     public showView(v:View):void {
