@@ -2,6 +2,8 @@
 
 ## Interface and scoreboard
 
+[Demo](https://hr-cmgt.github.io/PRG08-Week7-oefening1-completed/)
+
 In deze oefening bouwen we een startscherm, spelscherm en eindscherm. Alleen level.ts bevat een gameloop. 
 
 ## Opdracht

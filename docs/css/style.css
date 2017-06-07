@@ -32,12 +32,17 @@ container {
     overflow: hidden;
     border:3px solid white;
     box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.5);
-    background-color:darkgray;
+    background-color:black;
 }
 
 title {
     width:805px; height:265px;
     background-image: url('../images/title.png');
+}
+
+endtitle {
+    width:805px; height:265px;
+    background-image: url('../images/endtitle.png');
 }
 
 startbutton {
