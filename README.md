@@ -60,4 +60,5 @@ TweenLite.to(startDiv, 1, { x: 400, y: 400, ease: Bounce.easeOut, onComplete: th
 
 ## Links
 
+- [TweenLite docs](https://greensock.com/docs/#/HTML5/Animation/TweenLite/)
 - [Cheat Sheet PDF](https://ihatetomatoes.net/wp-content/uploads/2016/07/GreenSock-Cheatsheet-4.pdf)
