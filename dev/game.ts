@@ -1,26 +1,22 @@
 /// <reference path="views/level.ts"/>
 
 class Game {
-    
-    private view:View;
-    public container:HTMLElement;
-     
+
+    private view: View;
+    public container: HTMLElement;
+
     constructor() {
         this.container = document.createElement("container");
         document.body.appendChild(this.container);
-        
-        // TODO hier gaan we een new Level doorgeven aan showView !
-        // this.showView();
+
+        this.view = new Start(this);
     }
 
-    public showView(v:View):void {
+    public showView(v: View): void {
         this.view = v;
-
     }
-    
-} 
+}
 
-
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     new Game();
 });

@@ -56,6 +56,7 @@ var Player = (function () {
                 this.y -= 50;
                 if (this.y < -100)
                     this.y = 670;
+                Level.score++;
                 break;
             case 83:
                 this.y += 50;
@@ -87,6 +88,7 @@ var Level = (function () {
             c.update();
             if (Util.checkCollision(c, this.player)) {
                 hitCar = true;
+                this.gameOver();
             }
         }
         if (hitCar) {
@@ -96,6 +98,8 @@ var Level = (function () {
     };
     Level.prototype.gameOver = function () {
         clearInterval(this.intervalID);
+        this.div.remove();
+        this.game.showView(new Score(this.game));
     };
     Level.prototype.removeCar = function (c) {
         var i = this.cars.indexOf(c);
@@ -103,12 +107,14 @@ var Level = (function () {
             this.cars.splice(i, 1);
         }
     };
+    Level.score = 0;
     return Level;
 }());
 var Game = (function () {
     function Game() {
         this.container = document.createElement("container");
         document.body.appendChild(this.container);
+        this.view = new Start(this);
     }
     Game.prototype.showView = function (v) {
         this.view = v;
@@ -134,11 +140,13 @@ var Score = (function () {
         this.game = g;
         this.div = document.createElement("start");
         g.container.appendChild(this.div);
+        this.div.innerHTML = 'Score: ' + Level.score;
     }
     return Score;
 }());
 var Start = (function () {
     function Start(g) {
+        var _this = this;
         this.game = g;
         this.div = document.createElement("start");
         g.container.appendChild(this.div);
@@ -146,7 +154,16 @@ var Start = (function () {
         this.div.appendChild(title);
         this.btn = document.createElement("startbutton");
         this.div.appendChild(this.btn);
+        this.btn.addEventListener("click", function () { return _this._onclick(); });
+        TweenLite.set(title, { x: 100, y: -250 });
+        TweenLite.set(this.btn, { x: 325, y: -250 });
+        TweenLite.to(title, 1, { y: 100 });
+        TweenLite.to(this.btn, 1, { y: 500 });
     }
+    Start.prototype._onclick = function () {
+        this.div.remove();
+        this.game.showView(new Level(this.game));
+    };
     return Start;
 }());
 //# sourceMappingURL=main.js.map

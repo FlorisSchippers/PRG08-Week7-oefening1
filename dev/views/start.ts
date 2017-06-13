@@ -2,9 +2,9 @@ class Start implements View {
 
     private game: Game;
     public div: HTMLElement;
-    private btn:HTMLElement;
-    
-    constructor(g:Game) {    
+    private btn: HTMLElement;
+
+    constructor(g: Game) {
         this.game = g;
 
         this.div = document.createElement("start");
@@ -16,19 +16,16 @@ class Start implements View {
         this.btn = document.createElement("startbutton");
         this.div.appendChild(this.btn);
 
-        // STARTPOSITIE MET TWEENLITE
-        // TweenLite.set(title, {x:134, y:-230});
+        this.btn.addEventListener("click", () => this._onclick());
 
-        // ANIMATIE ONTWERPEN - zie documentatie cheatsheet
-        // ANIMATIETYPE IS 'Bounce', 'Back', 'Cubic', 'Linear'
-        // EASE IS easeIn, easeInOut, easeOut, easeNone
-        // TweenLite.to(title, 1, {y: 100, ease: ...});
+        TweenLite.set(title, { x: 100, y: -250 });
+        TweenLite.set(this.btn, { x: 325, y: -250 });
+        TweenLite.to(title, 1, { y: 100 });
+        TweenLite.to(this.btn, 1, { y: 500 });
+    }
 
-        // VOORBEELD MET CALLBACK
-        //TweenLite.to(this.btn, 1, { x: 400, onComplete: this.makeButton, onCompleteScope: this });
-    
-        // DE BUTTON MOET 
-        // - DE DIV WEGHALEN
-        // - game.showView AAN GAAN ROEPEN
+    private _onclick() {
+        this.div.remove();
+        this.game.showView(new Level(this.game));
     }
 }

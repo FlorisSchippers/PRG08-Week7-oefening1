@@ -40,6 +40,7 @@ class Player {
         case 87:
             this.y -= 50;
             if(this.y<-100)this.y = 670;
+            Level.score++;
             break;
         case 83:
             this.y += 50;
