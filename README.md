@@ -49,7 +49,7 @@ De interface animaties in het start en eindscherm kan je maken met Greensock. De
 - greensock.d.ts bestand in de definitions folder
 - inladen van de greensock library in index.html
 
-**Startknop in beeld laten vliegen**
+**Voorbeeldcode**
 ```
 TweenLite.to(startDiv, 1, { x: 400, y: 400, ease: Bounce.easeOut, onComplete: this.doSomething, onCompleteScope: this });
 ```
@@ -57,3 +57,7 @@ TweenLite.to(startDiv, 1, { x: 400, y: 400, ease: Bounce.easeOut, onComplete: th
 ## Cheat Sheet
 
 ![Cheatsheet](docs/images/tween_cheatsheet.png?raw=true "Cheat Sheet")
+
+## Links
+
+- [Cheat Sheet PDF](https://ihatetomatoes.net/wp-content/uploads/2016/07/GreenSock-Cheatsheet-4.pdf)
