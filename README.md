@@ -53,3 +53,7 @@ De interface animaties in het start en eindscherm kan je maken met Greensock. De
 ```
 TweenLite.to(startDiv, 1, { x: 400, y: 400, ease: Bounce.easeOut, onComplete: this.doSomething, onCompleteScope: this });
 ```
+
+## Cheat Sheet
+
+![Cheatsheet](docs/images/tween_cheatsheet.png?raw=true "Cheat Sheet")
