@@ -90,15 +90,12 @@ var Level = (function () {
             }
         }
         if (hitCar) {
-            this.gameOver();
+            console.log("game over!!!");
         }
-        else {
-            requestAnimationFrame(function () { return _this.gameLoop(); });
-        }
+        requestAnimationFrame(function () { return _this.gameLoop(); });
     };
     Level.prototype.gameOver = function () {
         clearInterval(this.intervalID);
-        this.game.showView(new Score(this.game));
     };
     Level.prototype.removeCar = function (c) {
         var i = this.cars.indexOf(c);
@@ -112,7 +109,6 @@ var Game = (function () {
     function Game() {
         this.container = document.createElement("container");
         document.body.appendChild(this.container);
-        this.showView(new Start(this));
     }
     Game.prototype.showView = function (v) {
         this.view = v;
@@ -148,8 +144,8 @@ var Start = (function () {
         g.container.appendChild(this.div);
         var title = document.createElement("title");
         this.div.appendChild(title);
-        var btn = document.createElement("startbutton");
-        this.div.appendChild(btn);
+        this.btn = document.createElement("startbutton");
+        this.div.appendChild(this.btn);
     }
     return Start;
 }());

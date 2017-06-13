@@ -2,6 +2,7 @@ class Start implements View {
 
     private game: Game;
     public div: HTMLElement;
+    private btn:HTMLElement;
     
     constructor(g:Game) {    
         this.game = g;
@@ -12,26 +13,22 @@ class Start implements View {
         let title = document.createElement("title");
         this.div.appendChild(title);
 
-        let btn = document.createElement("startbutton");
-        this.div.appendChild(btn);
-
-        // BTN ONCLICK: ROEP SHOWVIEW AAN IN GAME.TS
-        // this.game.showView(new Level(this.game)); 
-        // btn.addEventListener(...);
+        this.btn = document.createElement("startbutton");
+        this.div.appendChild(this.btn);
 
         // STARTPOSITIE MET TWEENLITE
-        // TweenLite.set(title, {x:134, y:-200});
-        // TweenLite.set(btn, {x:361, y:-200});
+        // TweenLite.set(title, {x:134, y:-230});
 
-        // ANIMATIE ONTWERPEN
+        // ANIMATIE ONTWERPEN - zie documentatie cheatsheet
         // ANIMATIETYPE IS 'Bounce', 'Back', 'Cubic', 'Linear'
         // EASE IS easeIn, easeInOut, easeOut, easeNone
-        // TweenLite.to(title, TIJD, {y: YWAARDE, ease: ANIMATIETYPE.easeOut});
-        // TweenLite.to(btn, TIJD, {delay:PAUZE, y:YWAARDE, ease: ANIMATIETYPE.easeOut});
+        // TweenLite.to(title, 1, {y: 100, ease: ...});
 
         // VOORBEELD MET CALLBACK
-        // TweenLite.to(btn, 1, { x: 400, y: 400, ease: Bounce.easeOut, onComplete: this.doSomething, onCompleteScope: this });
-
-        
+        //TweenLite.to(this.btn, 1, { x: 400, onComplete: this.makeButton, onCompleteScope: this });
+    
+        // DE BUTTON MOET 
+        // - DE DIV WEGHALEN
+        // - game.showView AAN GAAN ROEPEN
     }
 }

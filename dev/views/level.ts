@@ -40,17 +40,22 @@ class Level implements View {
             }
         }
 
-        // als we geen auto raken, gameloop door laten gaan
+        
+
+        // TO DO 
+        // REQUEST ANIMATION FRAME ALLEEN AANROEPEN ALS ER GEEN HITCAR IS!!!!
         if(hitCar){
-            this.gameOver();
-        } else {
-            requestAnimationFrame(()=>this.gameLoop());
+            console.log("game over!!!");
         }
+
+        requestAnimationFrame(()=>this.gameLoop());
     }
 
     private gameOver():void {
         clearInterval(this.intervalID);
-        this.game.showView(new Score(this.game));
+        // ALS JE DOOD BENT MOET JE
+        // de div weghalen
+        // game.showView AAN GAAN ROEPEN
     }
 
     public removeCar(c:Car){

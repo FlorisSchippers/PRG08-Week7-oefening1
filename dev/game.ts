@@ -9,11 +9,13 @@ class Game {
         this.container = document.createElement("container");
         document.body.appendChild(this.container);
         
-        this.showView(new Start(this));
+        // TODO hier gaan we een new Level doorgeven aan showView !
+        // this.showView();
     }
 
     public showView(v:View):void {
         this.view = v;
+
     }
     
 } 
