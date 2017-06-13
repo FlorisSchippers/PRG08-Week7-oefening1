@@ -10,16 +10,18 @@ In deze oefening bouwen we een startscherm, spelscherm en eindscherm. Alleen lev
 
 Game.ts heeft een functie om nieuwe views te laden. Roep deze functie steeds aan vanuit de drie verschillende schermen.
 
-- Laad eerst het startscherm in plaats van level.ts als de game start
-- Als je in startscherm op start klikt, dan gaat de game level.ts tonen
-- Als het game over is, dan zegt level.ts tegen game dat het eindscherm getoond moet worden
+- Laad het startscherm als de game start
+- In het startscherm gaan we de titel en button animeren
+- De starbutton roept de showView functie in game.ts aan
+- Level.ts wordt dan de nieuwe view
+- In level.ts maak je een gameover functie die het eindscherm toont
 
 **Tonen startscherm in game.ts**
 ```
 class Game {
      
     constructor() {
-        this.showView(new Level(this)); 
+        this.showView(...); 
     }
 
     public showView(v:View):void {
@@ -34,7 +36,7 @@ class Game {
 class GameView {
 
     public gameOver():void {
-        this.game.showView(new ScoreScreen(this.game)); 
+        this.game.showView(...); 
     }
     
 } 
